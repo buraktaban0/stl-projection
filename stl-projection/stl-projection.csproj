@@ -6,4 +6,8 @@
         <RootNamespace>stl_projection</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="ScottPlot" Version="4.1.3-beta" />
+    </ItemGroup>
+
 </Project>

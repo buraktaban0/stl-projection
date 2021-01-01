@@ -10,7 +10,6 @@ namespace STLProjection
 		{
 			Console.WriteLine("Hello World!");
 
-
 			var dir = "C:\\Users\\PC1\\Desktop\\495\\term";
 
 			var inputName = "Part1.stl";
@@ -20,8 +19,6 @@ namespace STLProjection
 			var pathShapes = dir + "\\" + shapeDataName;
 
 			var embedder = new Embedder(pathShapes);
-
-			return;
 
 
 			Stopwatch sw = new Stopwatch();
@@ -34,12 +31,27 @@ namespace STLProjection
 
 			Console.WriteLine($"Read: {sw.Elapsed.TotalMilliseconds} ms");
 
+			sw.Reset();
+			sw.Start();
 			var mesh = MeshUtility.StlModelToMesh(model);
+			sw.Stop();
 
-			MeshUtility.ApplyNoise(mesh, 0.25);
+			Console.WriteLine($"STL to mesh: {sw.Elapsed.TotalMilliseconds} ms");
+
+			sw.Reset();
+			sw.Start();
+			embedder.Embed(165289711, mesh, 12, 0.6, 0.5, 1, new Vector(25, 50, 31), -Vector.UP, Vector.RIGHT, Vector.FORWARD);
+			sw.Stop();
+
+			Console.WriteLine($"Embed: {sw.Elapsed.TotalMilliseconds} ms");
 
 
+			sw.Reset();
+			sw.Start();
 			model = MeshUtility.MeshToStlModel(mesh);
+			sw.Stop();
+
+			Console.WriteLine($"Mesh to STL: {sw.Elapsed.TotalMilliseconds} ms");
 
 			sw.Reset();
 			sw.Start();

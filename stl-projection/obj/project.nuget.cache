@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "GbLpwxvbjYe4NAFe0277TuNi1btbPUcHzrU6cDJGGbQgI6/PVsECVQUcuXgNLskM0dJwFW7LwPrsPGeBMeEd0w==",
+  "dgSpecHash": "f8kZQYqjzIaBCF7XArxn15A4D/TtVEoPoT42eMWtknG/rXlElMZT1erWTctq6hsM/PBf3i9RXmQqJgC9oYGa4A==",
   "success": true,
   "projectFilePath": "C:\\RiderProjects\\stl-projection\\stl-projection\\stl-projection.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\PC1\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\PC1\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\PC1\\.nuget\\packages\\scottplot\\4.1.3-beta\\scottplot.4.1.3-beta.nupkg.sha512",
+    "C:\\Users\\PC1\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

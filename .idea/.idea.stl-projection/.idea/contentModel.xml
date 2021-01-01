@@ -6,6 +6,7 @@
       <e p="stl-projection" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Embedder.cs" t="Include" />
+        <e p="GeoUtil.cs" t="Include" />
         <e p="Line.cs" t="Include" />
         <e p="Mesh.cs" t="Include" />
         <e p="MeshUtility.cs" t="Include" />

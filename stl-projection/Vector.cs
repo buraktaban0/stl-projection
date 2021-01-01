@@ -4,6 +4,13 @@ namespace STLProjection
 {
 	public struct Vector
 	{
+		public static readonly Vector RIGHT = new Vector(1, 0, 0);
+		public static readonly Vector UP = new Vector(0, 1, 0);
+		public static readonly Vector FORWARD = new Vector(0, 0, 1);
+		public static readonly Vector ONE = new Vector(1, 1, 1);
+		public static readonly Vector ZERO = new Vector(0, 0, 0);
+
+
 		public double x;
 		public double y;
 		public double z;
@@ -28,6 +35,10 @@ namespace STLProjection
 
 		public Vector Normalized => this / Magnitude;
 
+		public static double Distance(Vector a, Vector b)
+		{
+			return (a - b).Magnitude;
+		}
 
 		public static double Dot(Vector a, Vector b) => a.x * b.x + a.y * b.y + a.z * b.z;
 
