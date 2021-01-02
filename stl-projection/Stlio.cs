@@ -5,6 +5,8 @@ using System.Linq;
 
 namespace STLProjection
 {
+	
+	// IO operations to read and write files in STL format
 	public static class Stlio
 	{
 		public static StlModel Read(string path)

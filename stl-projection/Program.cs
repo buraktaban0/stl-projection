@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Text.Json.Serialization;
 
 namespace STLProjection
 {
@@ -8,24 +7,22 @@ namespace STLProjection
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			// Default debug paths
+			var pathShapes = "C:\\Users\\PC1\\Desktop\\495\\term\\shapes.txt";
+			var pathInput = "C:\\Users\\PC1\\Desktop\\495\\term\\Part1.stl";
+			var pathOutput = "C:\\Users\\PC1\\Desktop\\495\\term\\Out1.stl";
 
-			var dir = "C:\\Users\\PC1\\Desktop\\495\\term";
+			// Check command line arguments for paths
+			CollectPathArguments(args, ref pathShapes, ref pathInput, ref pathOutput);
 
-			var inputName = "Part1.stl";
-			var outputName = "Out1.stl";
-			var shapeDataName = "shapes.txt";
-
-			var pathShapes = dir + "\\" + shapeDataName;
-
+			// Create embedder with shapes
 			var embedder = new Embedder(pathShapes);
 
-
+			// For timing every step
 			Stopwatch sw = new Stopwatch();
-			var pathInput = dir + "\\" + inputName;
-			var pathOutput = dir + "\\" + outputName;
 
 			sw.Start();
+			// Read STL file into custom STL data structure
 			var model = Stlio.Read(pathInput);
 			sw.Stop();
 
@@ -33,6 +30,7 @@ namespace STLProjection
 
 			sw.Reset();
 			sw.Start();
+			// Convert STL to a more convenient mesh structure with shared vertices
 			var mesh = MeshUtility.StlModelToMesh(model);
 			sw.Stop();
 
@@ -40,7 +38,9 @@ namespace STLProjection
 
 			sw.Reset();
 			sw.Start();
-			embedder.Embed(165289711, mesh, 12, 0.6, 0.5, 1, new Vector(25, 50, 31), -Vector.UP, Vector.RIGHT, Vector.FORWARD);
+			// Embed the code onto the mesh 
+			embedder.Embed(165289711 /*Arbitrary number*/, mesh, 12, 0.6, 0.5, 1, new Vector(25, 50, 31), -Vector.UP,
+			               Vector.RIGHT);
 			sw.Stop();
 
 			Console.WriteLine($"Embed: {sw.Elapsed.TotalMilliseconds} ms");
@@ -48,6 +48,7 @@ namespace STLProjection
 
 			sw.Reset();
 			sw.Start();
+			// Convert mesh data back to STL format
 			model = MeshUtility.MeshToStlModel(mesh);
 			sw.Stop();
 
@@ -55,11 +56,38 @@ namespace STLProjection
 
 			sw.Reset();
 			sw.Start();
+			// Write modified STL data to output path
 			Stlio.Write(pathOutput, model);
 			sw.Stop();
 
-
 			Console.WriteLine($"Write: {sw.Elapsed.TotalMilliseconds} ms");
+		}
+
+		private static void CollectPathArguments(string[] args, ref string pathShapes, ref string pathInput,
+		                                         ref string pathOutput)
+		{
+			for (var i = 0; i < args.Length; i++)
+			{
+				var s = args[i];
+				if (i < args.Length - 1)
+				{
+					if (s == "--input")
+					{
+						i++;
+						pathInput = args[i];
+					}
+					else if (s == "--output")
+					{
+						i++;
+						pathOutput = args[i];
+					}
+					else if (s == "--shapes")
+					{
+						i++;
+						pathShapes = args[i];
+					}
+				}
+			}
 		}
 	}
 }

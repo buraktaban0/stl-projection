@@ -2,6 +2,7 @@
 
 namespace STLProjection
 {
+	// Convenient mesh data structure with shared vertices. Triangles are identified by the indices list containing integers pointing to vertices.
 	public class Mesh
 	{
 		public string name;

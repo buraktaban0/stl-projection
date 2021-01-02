@@ -3,6 +3,8 @@ using System.Linq;
 
 namespace STLProjection
 {
+	
+	// Shape data structure is defined by lines.
 	public class Shape
 	{
 		public List<Line> lines = new List<Line>();
@@ -28,6 +30,7 @@ namespace STLProjection
 		}
 
 
+		// Simply scale line vertices since the shape coordinate system's origin is defined at the bottom left corner of a shape. 
 		public Shape Scale(double m)
 		{
 			return new Shape(index) {lines = lines.Select(line => new Line(line.p1 * m, line.p2 * m)).ToList()};

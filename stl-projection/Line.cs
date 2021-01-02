@@ -1,5 +1,6 @@
 ﻿namespace STLProjection
 {
+	// Basic line segment data structure
 	public struct Line
 	{
 		public Vector p1;

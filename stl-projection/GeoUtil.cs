@@ -6,12 +6,14 @@ namespace STLProjection
 {
 	public class GeoUtil
 	{
+		// Project 3D point on plane and transform the projected position to the plane's coordinate system
 		public static Vector ProjectOnPlaneTransformed(Vector vec, Vector origin, Vector up, Vector right)
 		{
 			var r = vec - origin;
 			return new Vector(Vector.Dot(right, r), Vector.Dot(up, r));
 		}
 
+		// Shortest distance between a point and a line segment in 3D space.  
 		public static double PointLineDistance(Vector p, Line l)
 		{
 			var p1 = l.p1;

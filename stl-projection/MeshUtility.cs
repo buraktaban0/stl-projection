@@ -12,6 +12,8 @@ namespace STLProjection
 		// 	public int normCount = 0;
 		// }
 
+		
+		// Convert geometry from STL format to mesh format.
 		public static Mesh StlModelToMesh(StlModel model)
 		{
 			var verts = model.vertices;
@@ -19,7 +21,9 @@ namespace STLProjection
 
 			int triCount = model.TriangleCount;
 
+			// Hashmap used to keep track of overlapping vertices and share them between triangles.
 			Dictionary<Vector, int> hash = new Dictionary<Vector, int>();
+			
 			List<Vector> vertices = new List<Vector>();
 			List<Vector> normals = new List<Vector>();
 
@@ -33,11 +37,14 @@ namespace STLProjection
 					var v = verts[i * 3 + j];
 					if (hash.TryGetValue(v, out var sharedIndex))
 					{
+						// An overlapping vertex had already been seen, use shared index.
 						indices.Add(sharedIndex);
+						// Accumulate normals of triangles using the same vertex
 						normals[sharedIndex] += norm;
 					}
 					else
 					{
+						// New vertex
 						int index = vertices.Count;
 						vertices.Add(v);
 						normals.Add(norm);
@@ -47,20 +54,18 @@ namespace STLProjection
 				}
 			}
 
+			// Normalize the accumulated normal for each vertex, not the most accurate solution but okay in this case.
 			for (int i = 0; i < normals.Count; i++)
 			{
 				normals[i] = normals[i].Normalized;
 			}
 
-			// for (int i = 0; i < vertices.Count; i++)
-			// {
-			// 	Console.WriteLine(vertices[i].ToString("0.000") + "  " + normals[i].ToString("0.000"));
-			// }
-
 			var mesh = new Mesh(model.name, vertices, normals, indices);
 			return mesh;
 		}
 
+		
+		// Convert geometry from mesh format to STL format.
 		public static StlModel MeshToStlModel(Mesh mesh)
 		{
 			var triCount = mesh.TriangleCount;
@@ -91,13 +96,13 @@ namespace STLProjection
 				var r1 = (v1 - v0).Normalized;
 				var r2 = (v2 - v0).Normalized;
 				
+				// Normal of the triangle is either nCross or -nCross but we are not sure about the r1 and r2 direction
+				// at this point. Compare with the mean normal of corner vertices to deduce the direction.
 				var nCross = Vector.Cross(r1, r2);
 
 				var dot = Vector.Dot(nCross, nMean);
 				
 				var n = dot > 0 ? nCross : -nCross;
-
-				//Console.WriteLine($"{v0} ; {v1} ; {v2} :: {nMean} ; {nCross} ; {dot} ; {n}");
 				
 				normals.Add(n.Normalized);
 			}
@@ -106,16 +111,5 @@ namespace STLProjection
 			return stlModel;
 		}
 
-
-		public static void ApplyNoise(Mesh mesh, double strength)
-		{
-			var rand = new Random();
-			for (var i = 0; i < mesh.vertices.Count; i++)
-			{
-				var v = mesh.vertices[i];
-				var n = mesh.normals[i];
-				mesh.vertices[i] = v + n * ((rand.NextDouble() * 2 - 1) * strength);
-			}
-		}
 	}
 }

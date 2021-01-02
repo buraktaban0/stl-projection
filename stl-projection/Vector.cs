@@ -2,6 +2,8 @@
 
 namespace STLProjection
 {
+	
+	// Custom 3D Vector and vector math implementation 
 	public struct Vector
 	{
 		public static readonly Vector RIGHT = new Vector(1, 0, 0);
@@ -9,7 +11,6 @@ namespace STLProjection
 		public static readonly Vector FORWARD = new Vector(0, 0, 1);
 		public static readonly Vector ONE = new Vector(1, 1, 1);
 		public static readonly Vector ZERO = new Vector(0, 0, 0);
-
 
 		public double x;
 		public double y;
@@ -29,7 +30,6 @@ namespace STLProjection
 			this.z = z;
 		}
 
-
 		public double SqrMagnitude => x * x + y * y + z * z;
 		public double Magnitude    => System.Math.Sqrt(SqrMagnitude);
 
@@ -42,6 +42,7 @@ namespace STLProjection
 
 		public static double Dot(Vector a, Vector b) => a.x * b.x + a.y * b.y + a.z * b.z;
 
+		// Left handed
 		public static Vector Cross(Vector a, Vector b) =>
 			new Vector(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);
 
@@ -65,6 +66,7 @@ namespace STLProjection
 			return $"{x} {y} {z}";
 		}
 
+		// Common hash code generation method for 3D vectors, needed for fast lookups in hashmap used for shared vertices
 		public override int GetHashCode()
 		{
 			return x.GetHashCode() ^ y.GetHashCode() << 2 ^ z.GetHashCode() >> 2;
@@ -91,7 +93,7 @@ namespace STLProjection
 			return new Vector(x, y, z);
 		}
 
-
+		// Cannot rely on equality of floating point numbers, check if difference is within a threshold
 		public static bool Approximately(Vector a, Vector b, double threshold = 1e-4)
 		{
 			return System.Math.Abs(a.x - b.x) < threshold && System.Math.Abs(a.y - b.y) < threshold &&
@@ -99,6 +101,7 @@ namespace STLProjection
 		}
 
 
+		// Common vector operations
 		public static Vector operator +(Vector a, Vector b)
 		{
 			return new Vector(a.x + b.x, a.y + b.y, a.z + b.z);
