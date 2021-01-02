@@ -30,7 +30,7 @@ namespace STLProjection
 
 			sw.Reset();
 			sw.Start();
-			model.Subdivide();
+			model.Subdivide(2);
 			sw.Stop();
 			Console.WriteLine($"Subdivide: {sw.Elapsed.TotalMilliseconds} ms");
 			

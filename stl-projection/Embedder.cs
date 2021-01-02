@@ -152,7 +152,7 @@ namespace STLProjection
 					if (dist < thickness * 0.5)
 					{
 						// Point inside a line, modify the vertex and early exit the loop, no need to check any other line.
-						bool smoothDisplacement = true;
+						bool smoothDisplacement = false;
 						if (smoothDisplacement)
 						{
 							vertices[i] = v + forward * displacement * Smoothstep(1 - dist / (thickness * 0.5));

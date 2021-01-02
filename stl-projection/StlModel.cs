@@ -29,6 +29,7 @@ namespace STLProjection
 			}
 		}
 
+		// TODO: No need to subdivide the whole mesh, just focus on parts where detail is needed
 		public void Subdivide()
 		{
 			int triCount = TriangleCount;
