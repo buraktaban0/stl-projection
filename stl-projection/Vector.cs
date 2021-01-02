@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace STLProjection
+﻿namespace STLProjection
 {
 	
 	// Custom 3D Vector and vector math implementation 
