@@ -149,10 +149,19 @@ namespace STLProjection
 				foreach (var line in lines)
 				{
 					var dist = GeoUtil.PointLineDistance(vProj, line);
-					if (dist <= thickness * 0.5)
+					if (dist < thickness * 0.5)
 					{
 						// Point inside a line, modify the vertex and early exit the loop, no need to check any other line.
-						vertices[i] = v + forward * displacement;
+						bool smoothDisplacement = true;
+						if (smoothDisplacement)
+						{
+							vertices[i] = v + forward * displacement * Smoothstep(1 - dist / (thickness * 0.5));
+						}
+						else
+						{
+							vertices[i] = v + forward * displacement;
+						}
+
 						break;
 					}
 				}
@@ -170,6 +179,13 @@ namespace STLProjection
 			}
 
 			return m;
+		}
+
+
+		// Smooth in range [0, 1] (dy/dx @ 0 and 1 = 0)
+		private double Smoothstep(double x)
+		{
+			return 3 * x * x - 2 * x * x * x;
 		}
 	}
 }

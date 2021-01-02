@@ -30,6 +30,12 @@ namespace STLProjection
 
 			sw.Reset();
 			sw.Start();
+			model.Subdivide();
+			sw.Stop();
+			Console.WriteLine($"Subdivide: {sw.Elapsed.TotalMilliseconds} ms");
+			
+			sw.Reset();
+			sw.Start();
 			// Convert STL to a more convenient mesh structure with shared vertices
 			var mesh = MeshUtility.StlModelToMesh(model);
 			sw.Stop();
@@ -39,7 +45,7 @@ namespace STLProjection
 			sw.Reset();
 			sw.Start();
 			// Embed the code onto the mesh 
-			embedder.Embed(165289711 /*Arbitrary number*/, mesh, 12, 0.6, 0.5, 1, new Vector(25, 50, 31), -Vector.UP,
+			embedder.Embed(165289711 /*Arbitrary number*/, mesh, 15, 0.5, 0.6, 1, new Vector(25, 50, 32), -Vector.UP,
 			               Vector.RIGHT);
 			sw.Stop();
 
