@@ -24,21 +24,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0bf01920-6149-4ba0-a28f-b25c5c24d232" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/stl-projection-gui/MainForm.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stl-projection-gui/MainForm.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stl-projection-gui/MainForm.resx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stl-projection-gui/STLProjectionGUI.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stl-projection-gui/image1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stl-projection-gui/stl-projection-gui.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stl-projection-gui/symbols.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.stl-projection/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.stl-projection/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.stl-projection/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.stl-projection/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stl-projection.sln" beforeDir="false" afterPath="$PROJECT_DIR$/stl-projection.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stl-projection/Embedder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/stl-projection/Embedder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stl-projection/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/stl-projection/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl-projection-gui/STLProjectionGUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/stl-projection-gui/STLProjectionGUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl-projection/GeoUtil.cs" beforeDir="false" afterPath="$PROJECT_DIR$/stl-projection/GeoUtil.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl-projection/Mesh.cs" beforeDir="false" afterPath="$PROJECT_DIR$/stl-projection/Mesh.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl-projection/MeshUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/stl-projection/MeshUtility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl-projection/StlModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/stl-projection/StlModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl-projection/Stlio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/stl-projection/Stlio.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl-projection/Vector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/stl-projection/Vector.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stl-projection/obj/Debug/netcoreapp3.1/stl-projection.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/stl-projection/obj/Debug/netcoreapp3.1/stl-projection.csprojAssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stl-projection/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/stl-projection/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stl-projection/stl-projection.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/stl-projection/stl-projection.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,21 +52,21 @@
       <list>
         <option value="$PROJECT_DIR$/stl-projection/Vector3.cs" />
         <option value="$PROJECT_DIR$/stl-projection/Line.cs" />
-        <option value="$PROJECT_DIR$/stl-projection/Mesh.cs" />
         <option value="$PROJECT_DIR$/stl-projection/Shape.cs" />
-        <option value="$PROJECT_DIR$/stl-projection/GeoUtil.cs" />
-        <option value="$PROJECT_DIR$/stl-projection/MeshUtility.cs" />
-        <option value="$PROJECT_DIR$/stl-projection/Stlio.cs" />
-        <option value="$PROJECT_DIR$/stl-projection/StlModel.cs" />
-        <option value="$PROJECT_DIR$/stl-projection/Vector.cs" />
         <option value="$PROJECT_DIR$/stl-projection/Program.cs" />
         <option value="$PROJECT_DIR$/stl-projection-gui/Form1.cs" />
         <option value="$PROJECT_DIR$/stl-projection-gui/Program.cs" />
         <option value="$PROJECT_DIR$/stl-projection-gui/stl-projection-gui.csproj" />
         <option value="$PROJECT_DIR$/stl-projection/Embedder.cs" />
         <option value="$PROJECT_DIR$/stl-projection-gui/MainForm.Designer.cs" />
-        <option value="$PROJECT_DIR$/stl-projection-gui/STLProjectionGUI.cs" />
         <option value="$PROJECT_DIR$/stl-projection-gui/MainForm.cs" />
+        <option value="$PROJECT_DIR$/stl-projection/MeshUtility.cs" />
+        <option value="$PROJECT_DIR$/stl-projection/Stlio.cs" />
+        <option value="$PROJECT_DIR$/stl-projection/Mesh.cs" />
+        <option value="$PROJECT_DIR$/stl-projection/Vector.cs" />
+        <option value="$PROJECT_DIR$/stl-projection/GeoUtil.cs" />
+        <option value="$PROJECT_DIR$/stl-projection/StlModel.cs" />
+        <option value="$PROJECT_DIR$/stl-projection-gui/STLProjectionGUI.cs" />
       </list>
     </option>
   </component>
@@ -144,6 +138,7 @@
       <workItem from="1609618105950" duration="1974000" />
       <workItem from="1609622094870" duration="202000" />
       <workItem from="1609622687814" duration="5669000" />
+      <workItem from="1609697414018" duration="5232000" />
     </task>
     <servers />
   </component>
@@ -171,22 +166,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="446" key="AddNewResourceElement/0.0.1920.1040@0.0.1920.1040" timestamp="1609624969119" />
-    <state width="1877" height="279" key="GridCell.Tab.0.bottom" timestamp="1609628358554">
+    <state width="947" height="278" key="GridCell.Tab.0.bottom" timestamp="1609702346907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1609628358554" />
-    <state width="1877" height="279" key="GridCell.Tab.0.center" timestamp="1609628358554">
+    <state width="947" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1609702346907" />
+    <state width="947" height="278" key="GridCell.Tab.0.center" timestamp="1609702346907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1609628358554" />
-    <state width="1877" height="279" key="GridCell.Tab.0.left" timestamp="1609628358554">
+    <state width="947" height="278" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1609702346907" />
+    <state width="947" height="278" key="GridCell.Tab.0.left" timestamp="1609702346907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1609628358554" />
-    <state width="1877" height="279" key="GridCell.Tab.0.right" timestamp="1609628358554">
+    <state width="947" height="278" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1609702346907" />
+    <state width="947" height="278" key="GridCell.Tab.0.right" timestamp="1609702346907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1609628358554" />
+    <state width="947" height="278" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1609702346907" />
     <state width="1877" height="375" key="GridCell.Tab.1.bottom" timestamp="1609549049777">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -271,9 +266,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="100" y="100" width="1720" height="840" key="VCS.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1609591028744" />
-    <state x="623" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1609616407183">
+    <state x="623" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1609702519895">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="229" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1609616407183" />
+    <state x="623" y="229" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1609702519895" />
   </component>
 </project>

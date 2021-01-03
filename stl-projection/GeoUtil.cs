@@ -1,5 +1,4 @@
-﻿
-namespace STLProjection
+﻿namespace STLProjection
 {
 	public class GeoUtil
 	{
@@ -34,6 +33,13 @@ namespace STLProjection
 			var n = new Vector(r12Norm.y, -r12Norm.x);
 
 			return System.Math.Abs(Vector.Dot(n, r2));
+		}
+
+		public static bool RectContains(Vector v, double size)
+		{
+			var halfSize = size * 0.5;
+			return v.x >= -halfSize && v.x <= halfSize && v.y >= -halfSize && v.y <= halfSize && v.z >= -halfSize &&
+			       v.z <= halfSize;
 		}
 	}
 }

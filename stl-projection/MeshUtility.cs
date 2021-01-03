@@ -4,14 +4,6 @@ namespace STLProjection
 {
 	public class MeshUtility
 	{
-		// private class SharedVertexData
-		// {
-		// 	public int index = -1;
-		// 	public Vector3 cumNorm = new Vector3(0, 0, 0);
-		// 	public int normCount = 0;
-		// }
-
-		
 		// Convert geometry from STL format to mesh format.
 		public static Mesh StlModelToMesh(StlModel model)
 		{

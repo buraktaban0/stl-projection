@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace STLProjection
 {
@@ -40,6 +41,36 @@ namespace STLProjection
 			var model = new StlModel(name, vertices, normals);
 
 			return model;
+		}
+
+		public static void WriteFast(string path, StlModel model)
+		{
+			StringBuilder sb = new StringBuilder();
+			
+			var vertices = model.vertices;
+			var normals = model.normals;
+			int tris = model.normals.Count;
+
+			sb.Append("solid ").Append(model.name);
+			
+			for (int i = 0; i < tris; i++)
+			{
+				var n = normals[i];
+				sb.Append("\r\n").Append("   facet normal ").Append(n.x).Append(" ").Append(n.y).Append(" ").Append(n.z);
+				sb.Append("\r\n").Append("      outer loop");
+				for (int j = 0; j < 3; j++)
+				{
+					var v = vertices[i * 3 + j];
+					sb.Append("\r\n").Append("         vertex ").Append(v.x).Append(" ").Append(v.y).Append(" ")
+					  .Append(v.z);
+				}
+				sb.Append("\r\n").Append("      endloop");
+				sb.Append("\r\n").Append("   endfacet");
+			}
+
+			sb.Append("\r\n endsolid");
+			
+			File.WriteAllText(path, sb.ToString());
 		}
 
 		public static void Write(string path, StlModel model)

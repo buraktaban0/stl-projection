@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using STLProjection;
@@ -90,13 +88,7 @@ namespace stl_projection_gui
 
 		public static void Embed(ProgressBar progressBar, Action onCompleted)
 		{
-			Action<int> setProg = i =>
-			{
-				progressBar.Invoke((MethodInvoker) delegate
-				{
-					progressBar.Value = i;
-				});
-			};
+			Action<int> setProg = i => { progressBar.Invoke((MethodInvoker) delegate { progressBar.Value = i; }); };
 
 			setProg(0);
 			Task.Run(() =>
@@ -104,26 +96,33 @@ namespace stl_projection_gui
 				var model = Stlio.Read(inputPath);
 
 				setProg(10);
-				model.Subdivide(subdivisions);
 
-				setProg(25);
+				model.CalculateBounds();
+				model.CenterBounds();
+
+				setProg(15);
+
+				//model.Subdivide(subdivisions);
+				model.SubdivideDetail(subdivisions, Vector.UP * 50, -Vector.UP, Vector.RIGHT, size * 1.25);
+
+				setProg(30);
+
 				var mesh = MeshUtility.StlModelToMesh(model);
 
 				setProg(35);
-				embedder.Embed(id, mesh, size, margin, 0.6, 0.7, new Vector(25, 50, 32), -Vector.UP, Vector.RIGHT);
+				embedder.Embed(id, mesh, size, margin, 0.6, 0.7, Vector.UP * 50, -Vector.UP, Vector.RIGHT);
 
-				setProg(70);
+				setProg(65);
 				model = MeshUtility.MeshToStlModel(mesh);
-			
-				setProg(80);
-				
-				Stlio.Write(outputPath, model);
-				
+
+				setProg(75);
+
+				Stlio.WriteFast(outputPath, model);
+
 				setProg(100);
-				
+
 				onCompleted.Invoke();
 			}).ConfigureAwait(false);
-
 		}
 	}
 }

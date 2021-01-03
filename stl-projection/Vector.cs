@@ -1,6 +1,7 @@
-﻿namespace STLProjection
+﻿using System;
+
+namespace STLProjection
 {
-	
 	// Custom 3D Vector and vector math implementation 
 	public struct Vector
 	{
@@ -38,6 +39,12 @@
 			return (a - b).Magnitude;
 		}
 
+		public static double ManhattanDistance(Vector a, Vector b)
+		{
+			var r = a - b;
+			return Math.Abs(r.x) + Math.Abs(r.y) + Math.Abs(r.z);
+		}
+
 		public static double Dot(Vector a, Vector b) => a.x * b.x + a.y * b.y + a.z * b.z;
 
 		// Left handed
@@ -47,6 +54,16 @@
 		public static double Angle(Vector a, Vector b)
 		{
 			return System.Math.Acos(Vector.Dot(a, b) / a.Magnitude / b.Magnitude) * 180.0 / System.Math.PI;
+		}
+
+		public static Vector ElementWiseMin(Vector a, Vector b)
+		{
+			return new Vector(Math.Min(a.x, b.x), Math.Min(a.y, b.y), Math.Min(a.z, b.z));
+		}
+
+		public static Vector ElementWiseMax(Vector a, Vector b)
+		{
+			return new Vector(Math.Max(a.x, b.x), Math.Max(a.y, b.y), Math.Max(a.z, b.z));
 		}
 
 		public string ToString(string format)
