@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -95,11 +96,6 @@ namespace STLProjection
 				}
 			}
 
-			// var plt = new ScottPlot.Plot(200 * COLUMNS, 200 * ROWS);
-			// lines.ForEach(l => plt.PlotScatter(new[] {l.p1.x, l.p2.x}, new[] {l.p1.y, l.p2.y}));
-			//
-			// plt.SaveFig("C:\\Users\\PC1\\Desktop\\495\\term\\matrix.png");
-
 			return lines;
 		}
 
@@ -184,6 +180,20 @@ namespace STLProjection
 		private double Smoothstep(double x)
 		{
 			return 3 * x * x - 2 * x * x * x;
+		}
+
+		public string SaveMatrixPng(int id, double size, double margin)
+		{
+			var shapes = GetEncodedShapes(id);
+			var lines = ConstructMatrix(shapes, size, margin);
+
+			var plt = new ScottPlot.Plot(200 * COLUMNS, 200 * ROWS);
+			lines.ForEach(l => plt.PlotScatter(new[] {l.p1.x, l.p2.x}, new[] {l.p1.y, l.p2.y}));
+
+			string path = System.IO.Path.GetTempPath() + Guid.NewGuid().ToString() + ".png";
+			plt.SaveFig(path);
+
+			return path;
 		}
 	}
 }

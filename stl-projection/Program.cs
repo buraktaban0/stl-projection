@@ -5,8 +5,11 @@ namespace STLProjection
 {
 	class Program
 	{
+		
+		[STAThread]
 		static void Main(string[] args)
 		{
+			
 			// Default debug paths
 			var pathShapes = "C:\\Users\\PC1\\Desktop\\495\\term\\shapes.txt";
 			var pathInput = "C:\\Users\\PC1\\Desktop\\495\\term\\Part1.stl";
