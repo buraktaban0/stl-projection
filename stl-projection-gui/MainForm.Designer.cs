@@ -139,7 +139,7 @@
 			// inputSubd
 			// 
 			this.inputSubd.Location = new System.Drawing.Point(157, 78);
-			this.inputSubd.Maximum = new decimal(new int[] {3, 0, 0, 0});
+			this.inputSubd.Maximum = new decimal(new int[] {6, 0, 0, 0});
 			this.inputSubd.Name = "inputSubd";
 			this.inputSubd.Size = new System.Drawing.Size(173, 20);
 			this.inputSubd.TabIndex = 13;
