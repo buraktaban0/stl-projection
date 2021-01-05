@@ -161,6 +161,58 @@ namespace STLProjection
 				}
 			}
 		}
+		
+		
+		public void EmbedSubdivideOnDemand(int id, Mesh mesh, double size, double margin, double thickness, double displacement,
+		                  Vector origin,
+		                  Vector forward, Vector up)
+		{
+			var right = Vector.Cross(up, forward);
+
+			var encodedShapes = GetEncodedShapes(id);
+			var lines = ConstructMatrix(encodedShapes, size, thickness + margin);
+
+			var vertices = mesh.vertices;
+			var normals = mesh.normals;
+
+			for (var i = 0; i < vertices.Count; i++)
+			{
+				var v = vertices[i];
+				var n = normals[i];
+
+				if (Vector.Dot(forward, n) >= -0.01)
+				{
+					// Not facing the projection plane, no need to continue further.
+					continue;
+				}
+
+				// TODO: Additional check to see if the face is facing the projection plane but occluded by other faces in the geometry.
+				// Required for complex geometry.
+
+				var vProj = GeoUtil.ProjectOnPlaneTransformed(v, origin, up, right);
+
+				// Check for each line if the projected point lies inside it, with the thickness used as the threshold.
+				foreach (var line in lines)
+				{
+					var dist = GeoUtil.PointLineDistance(vProj, line);
+					if (dist < thickness * 0.5)
+					{
+						// Point inside a line, modify the vertex and early exit the loop, no need to check any other line.
+						bool smoothDisplacement = false;
+						if (smoothDisplacement)
+						{
+							vertices[i] = v + forward * displacement * Smoothstep(1 - dist / (thickness * 0.5));
+						}
+						else
+						{
+							vertices[i] = v + forward * displacement;
+						}
+
+						break;
+					}
+				}
+			}
+		}
 
 
 		// Simple integer power implemented for no unknown behaviour
